@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Pengenalan — Misi Detektif: Koordinat</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#10263a;color:#2b2118;font-family:"Trebuchet MS",Arial,sans-serif;overflow-x:hidden}
+.hero{position:relative;width:100%;min-height:100vh;overflow:hidden;background:#56bde9}
+.scene{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,18,32,.03),rgba(4,18,32,.08)),url("pirate-reference.png") center top/cover no-repeat;transform:scale(1.015);z-index:0}
+.cloud{position:absolute;width:150px;height:42px;border-radius:999px;background:rgba(255,255,255,.38);filter:blur(1px);z-index:1;animation:cloud 28s linear infinite}
+.cloud:before,.cloud:after{content:"";position:absolute;border-radius:50%;background:inherit}.cloud:before{width:65px;height:65px;left:25px;top:-28px}.cloud:after{width:80px;height:80px;right:20px;top:-38px}
+.c1{top:11%;left:-180px}.c2{top:25%;left:-260px;transform:scale(.65);opacity:.55;animation-duration:38s;animation-delay:-12s}
+.water{position:absolute;left:0;right:0;top:43%;height:25%;z-index:2;opacity:.18;background:repeating-linear-gradient(-8deg,transparent 0 18px,rgba(255,255,255,.8) 19px 22px,transparent 23px 43px);animation:water 4.5s linear infinite;mix-blend-mode:screen}
+.pirate{position:absolute;z-index:3;left:0;top:15%;width:29%;height:52%;min-width:260px;background:url("pirate-reference.png") left 48%/345% auto no-repeat;clip-path:polygon(5% 0,82% 0,96% 12%,100% 34%,94% 57%,88% 77%,72% 100%,25% 100%,5% 87%,0 63%,2% 30%);transform-origin:55% 82%;animation:bob 3.4s ease-in-out infinite;pointer-events:none}
+.wave{position:absolute;z-index:4;left:19%;top:27%;width:72px;height:42px;border:4px solid rgba(255,220,115,.65);border-color:rgba(255,220,115,.65) transparent transparent transparent;border-radius:50%;transform:rotate(-20deg);animation:wave 1.8s ease-in-out infinite;pointer-events:none}
+.spark{position:absolute;z-index:5;width:9px;height:9px;background:#fff3a6;transform:rotate(45deg);box-shadow:0 0 16px #ffe278;animation:spark 2s ease-in-out infinite}
+.s1{right:18%;top:32%}.s2{right:25%;top:39%;width:6px;height:6px;animation-delay:1s}.s3{left:27%;top:34%;width:5px;height:5px;animation-delay:1.5s}
+.title{position:relative;z-index:10;width:min(680px,64vw);margin:28px auto 0;padding:17px 30px 21px;text-align:center;color:#fff4d1;font-weight:1000;letter-spacing:1px;font-size:clamp(30px,4.7vw,66px);line-height:.95;text-shadow:3px 3px #4c2816,-2px -2px #4c2816,2px -2px #4c2816,-2px 2px #4c2816;background:linear-gradient(#a9622f,#70401f 55%,#5a321b);border:7px solid #3c2315;border-radius:18px;box-shadow:inset 0 0 0 4px #d89a4d,0 12px #301c11aa,0 20px 35px #0004}
+.title small{display:block;margin-top:10px;font-size:clamp(11px,1.25vw,17px);letter-spacing:3px;color:#ffe6a3}
+.intro{position:absolute;z-index:10;left:4.5%;bottom:5.5%;width:min(500px,43vw);padding:22px 26px;background:linear-gradient(#fff4cdf5,#efcc84f0);border:6px solid #5b341d;border-radius:18px;box-shadow:inset 0 0 0 3px #e8ad4d,0 12px 30px #0006}
+.intro h2{margin:0 0 8px;color:#6d1e1a;font-size:clamp(20px,2.1vw,32px);text-shadow:2px 2px #f8d78c}.intro p{margin:8px 0;font-size:clamp(13px,1.15vw,18px);font-weight:700;line-height:1.45}.intro .small{font-size:clamp(11px,1vw,15px);color:#5b4633}
+.btn{display:inline-flex;margin-top:12px;padding:12px 22px;border:4px solid #4a2817;border-radius:12px;background:linear-gradient(#d24a39,#92251f);color:#fff7df;font-size:15px;font-weight:1000;text-decoration:none;text-shadow:2px 2px #5d1b17;box-shadow:0 6px #5a2c1a,0 10px 20px #0004;transition:.18s}
+.btn:hover{transform:translateY(-3px) scale(1.02);filter:brightness(1.1)}.btn:active{transform:translateY(3px)}
+.info{position:relative;min-height:100vh;padding:80px 5vw 100px;background:linear-gradient(#ffe7abeb,#f6cf85f5),url("pirate-reference.png") center/cover no-repeat;overflow:hidden}
+.ribbon{position:relative;width:min(760px,90vw);margin:0 auto 42px;padding:17px 30px;text-align:center;background:linear-gradient(#b63a2d,#8d211d);border:5px solid #5a271a;color:#fff2ca;font-size:clamp(24px,3.2vw,46px);font-weight:1000;text-shadow:3px 3px #5a1c17;box-shadow:0 8px #d88b32,0 15px 25px #40231240}
+.cards{position:relative;width:min(1120px,92vw);margin:auto;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
+.card{min-height:250px;padding:28px;background:#fff6d6f7;border:5px solid #6b3d20;border-radius:18px;box-shadow:inset 0 0 0 4px #e4aa4e,0 15px 30px #4a2a1533;display:flex;align-items:center;gap:24px;transition:.25s}
+.card:hover{transform:translateY(-7px);box-shadow:inset 0 0 0 4px #e4aa4e,0 22px 36px #4a2a154d}
+.icon{flex:0 0 115px;height:115px;border-radius:25px;display:grid;place-items:center;background:linear-gradient(#f7ca5b,#d99632);border:5px solid #5c331d;box-shadow:inset 0 0 0 3px #ffe7a0;font-size:58px}
+.card h3{margin:0 0 8px;color:#fff2d1;background:linear-gradient(#bd392d,#8d211d);border:4px solid #5b251a;padding:7px 14px;width:fit-content;border-radius:9px;font-size:18px;text-shadow:2px 2px #5a1c17}.main{margin:0;font-size:clamp(25px,3vw,42px);font-weight:1000}.sub{margin:4px 0 0;font-size:clamp(17px,1.6vw,24px);font-weight:900}
+.dskp{width:min(1120px,92vw);margin:35px auto 0;padding:28px;background:#fff6d6f7;border:5px solid #6b3d20;border-radius:18px;box-shadow:inset 0 0 0 4px #e4aa4e,0 15px 30px #4a2a1533}
+.dskp h2{margin:0 0 18px;color:#7d211b;font-size:clamp(22px,2.2vw,32px)}.std{display:grid;grid-template-columns:105px 1fr;gap:14px;align-items:start;margin:12px 0}.num{background:#a72d26;color:#fff1ce;border:4px solid #5b251a;border-radius:10px;padding:10px;font-weight:1000;text-align:center}.txt{padding:10px 14px;background:#fff8df;border:3px solid #d8a454;border-radius:10px;font-weight:800;line-height:1.4}
+.grid{margin:28px auto 0;width:min(520px,85vw);aspect-ratio:1;position:relative;border:4px solid #5b341d;background:linear-gradient(to right,#64412338 1px,transparent 1px),linear-gradient(to bottom,#64412338 1px,transparent 1px),#fff5d7;background-size:10% 10%;box-shadow:inset 0 0 0 3px #e3b35f}.x,.y{position:absolute;background:#7a3026}.x{left:0;right:0;top:50%;height:4px}.y{top:0;bottom:0;left:50%;width:4px}.pt{position:absolute;width:16px;height:16px;border-radius:50%;background:#d9362f;border:3px solid #5b251a;animation:pulse 1.8s ease-in-out infinite}.p1{left:70%;top:30%}.p2{left:30%;top:65%;animation-delay:.6s}.p3{left:62%;top:62%;animation-delay:1.1s}
+footer{padding:22px;text-align:center;background:#3b2418;color:#ffe9ad;font-weight:800}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translate(2px,-8px) rotate(.7deg)}}@keyframes wave{0%,100%{transform:rotate(-20deg) scale(.8);opacity:.15}50%{transform:rotate(-5deg) scale(1.08);opacity:.9}}@keyframes spark{0%,100%{transform:rotate(45deg) scale(.4);opacity:.15}50%{transform:rotate(45deg) scale(1.15);opacity:1}}@keyframes water{from{transform:translateX(0)}to{transform:translateX(65px)}}@keyframes cloud{from{transform:translateX(0)}to{transform:translateX(125vw)}}@keyframes pulse{0%,100%{transform:scale(.8);box-shadow:0 0 0 rgba(217,54,47,.5)}50%{transform:scale(1.25);box-shadow:0 0 0 13px rgba(217,54,47,0)}}
+@media(max-width:850px){.hero{min-height:760px}.title{width:82vw}.pirate{width:44%;min-width:210px;top:22%}.intro{width:88vw;left:6vw;bottom:4%}.cards{grid-template-columns:1fr}}
+@media(max-width:560px){.hero{min-height:820px}.title{font-size:31px;padding:13px 16px 16px}.title small{font-size:10px}.pirate{width:58%;top:22%}.intro{bottom:3%;padding:17px}.card{flex-direction:column;text-align:center}.icon{flex-basis:90px;width:90px;height:90px;font-size:42px}.card h3{margin-left:auto;margin-right:auto}.std{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<section class="hero" id="pengenalan">
+  <div class="scene"></div>
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="water"></div>
+  <div class="pirate"></div><div class="wave"></div>
+  <div class="spark s1"></div><div class="spark s2"></div><div class="spark s3"></div>
+
+  <div class="title">PENGENALAN<small>MISI DETEKTIF: KOORDINAT • MATEMATIK TAHUN 4</small></div>
+
+  <article class="intro">
+    <h2>AHOY, DETEKTIF!</h2>
+    <p id="story"></p>
+    <p class="small">Mari gunakan koordinat untuk mencari lokasi misteri dan menemui harta karun yang tersembunyi!</p>
+    <a class="btn" href="#maklumat">🔎 MULAKAN MISI</a>
+  </article>
+</section>
+
+<section class="info" id="maklumat">
+  <div class="ribbon">MAKLUMAT SUBJEK DAN TOPIK</div>
+  <div class="cards">
+    <article class="card"><div class="icon">📚</div><div><h3>SUBJEK</h3><p class="main">Matematik</p><p class="sub">Tahun 4</p></div></article>
+    <article class="card"><div class="icon">🧭</div><div><h3>TOPIK</h3><p class="main">7.0 Koordinat,</p><p class="sub">Nisbah dan Kadaran</p></div></article>
+  </div>
+  <section class="dskp">
+    <h2>7.1 KOORDINAT PADA SUKUAN PERTAMA</h2>
+    <div class="std"><div class="num">7.1.1</div><div class="txt">Mengenal pasti paksi-x, paksi-y dan asalan (0,0).</div></div>
+    <div class="std"><div class="num">7.1.2</div><div class="txt">Menentukan koordinat bagi sesuatu titik pada sukuan pertama dan juga sebaliknya.</div></div>
+    <div class="grid"><div class="x"></div><div class="y"></div><div class="pt p1"></div><div class="pt p2"></div><div class="pt p3"></div></div>
+  </section>
+</section>
+<footer>Misi Detektif: Koordinat • Matematik Tahun 4</footer>
+<script>
+const story="Selamat datang ke Misi Detektif: Koordinat! Satu harta karun misteri telah tersembunyi di sebuah pulau rahsia. Untuk mencarinya, kamu perlu menggunakan koordinat dengan tepat.";
+let i=0;const el=document.getElementById("story");function type(){if(i<story.length){el.textContent+=story[i++];setTimeout(type,25)}}window.addEventListener("load",()=>setTimeout(type,450));
+const hero=document.querySelector(".hero"),scene=document.querySelector(".scene"),pirate=document.querySelector(".pirate");
+hero.addEventListener("pointermove",e=>{const r=hero.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;scene.style.transform=`scale(1.015) translate(${x*-7}px,${y*-4}px)`;pirate.style.marginLeft=`${x*4}px`});
+hero.addEventListener("pointerleave",()=>{scene.style.transform="scale(1.015)";pirate.style.marginLeft="0"});
+</script>
+</body>
+</html>
